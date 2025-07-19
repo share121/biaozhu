@@ -1,0 +1,104 @@
+body {
+    overflow: hidden;
+}
+
+form {
+    height: 100%
+}
+
+hr {
+    width: 98%;
+}
+
+.container {
+	background-color: #F0f0F0;
+    display: block;
+    position: absolute;
+    height: auto;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.column_wrap {
+    position: relative;
+}
+
+.left {
+    width: calc(25% - 10px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: auto;
+    display: block;
+    margin: 10px 0 10px 10px;
+}
+
+.right {
+	background-color: #F8F8F8;
+    border-left: 1px solid gray;
+    margin: 10px 10px 10px calc(25% + 5px);
+    padding-left: 10px;
+}
+
+#images, #classes, #bboxes {
+    width: 175px;
+    margin-top: 10px;
+}
+
+#bboxes {
+    width: 130px;
+}
+
+#imageList, #classList, #description {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 10%;
+}
+/* 
+#saveClasses, #restoreBboxes, #cropImages {
+    float: right;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+*/ 
+
+#imageSearch {
+    margin-top: 10px;
+}
+
+#imageInformation, #bboxInformation {
+    height: 20px;
+    width: 100%;
+}
+
+#output {
+    margin-top: 10px;
+}
+
+
+#color{
+	border: 0;
+	padding: 0;
+}
+
+#deleteclasses{
+	margin-right: 30px;
+}
+
+#task{
+	font-size:25px;
+	color: blue;
+}
+
+#task > input{
+	height:20px;
+	width: 20px;
+}
+
+#restoreBboxes{
+    margin-top: 10px;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pic_tag</title>
+    <link href="Pic_tag.css" rel="stylesheet" charset="utf-8">
+    <script src="canvas.min.js"></script>
+    <script src="jszip.min.js"></script>
+    <script src="filesaver.min.js"></script>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="left">
+			<div id = "task">
+				<b>数据任务：</b>
+				<input type="radio" name="task" value = "classification"><label>图象分类</label>
+				<input type="radio" name="task" value = "detection" checked /><label>目标检测</label>
+			</div>
+			<hr />
+            <form action="">
+				<label for="images">（批量）导入图片：</label>
+                <input type="file" id="images" name="images[]" accept="image/jpeg, image/png" multiple />
+                <br />
+                <label hidden for="imageSearch">查找：</label>
+                <input hidden type="text" id="imageSearch" name="imageSearch"/>
+                <label for="imageList"></label><select name="imageList" id="imageList" size="10"></select>
+                <div id = "imageInformation" hidden></div>
+                <hr />
+				
+				<input type="text" name="class" id="class" placeholder="在此输入分类名">
+				<input type="button" name="addclasses" id="addclasses" value="添加分类" />
+				<input hidden type="button" name="modifyclasses" id="modifyclasses" value="修改类名"/>
+				<br />
+                <label for="classList"></label><select name="classList" id="classList" size="10"></select>
+				<input hidden type="button" name="deleteclasses" id="deleteclasses" value="删除分类"/>
+				<label hidden id="deleteclasses_label">分类颜色：</label><input hidden type="color" id="color">
+                <div id="bboxInformation" hidden></div>
+                <hr />
+				
+                <label hidden for="restoreBboxes_file" id="restoreBboxes_label">导入本地标签文件：</label>
+                <input hidden type="file" id="restoreBboxes_file" name="bboxes[]" accept="text/plain, application/zip, text/xml, application/xml, application/json" multiple disabled/>
+                <hr hidden id="restoreBboxes_hr"/>
+
+                <div id="output">
+					<label>选择需要输出的内容：</label>
+					<input type="button" name="save" id="save" value="导出数据" />
+					<br />
+					<input type="checkbox" name="image_o" id="image_o" value="image_o"/><label>原始图片</label>
+                    <br />
+					<input type="checkbox" name="image_bboxes" id="image_bboxes" value="image_bboxes" checked/><label id = "bboxes_images">带标注框图片</label>
+                    <br />
+					<input type="checkbox" name="crop_images" id="crop_images" value="crop_images"/><label id = "crop_images_label">标注框内分块图片</label>
+					<br name = "save_br"/>
+					<input type="checkbox" name="saveDetection" value="saveVocBboxes" id="saveVocBboxes" checked /><label name = "saveDetection">voc格式标签数据（.xml）</label>
+                    <br name = "save_br"/>
+					<input type="checkbox" name="saveDetection" value="saveCocoBboxes" id="saveCocoBboxes" /><label name = "saveDetection">coco格式标签数据（.json）</label>
+                    <br name = "save_br"/>
+					<input type="checkbox" name="saveDetection" value="saveYoloBboxes" id="saveYoloBboxes" /><label name = "saveDetection">yolo格式标签数据（.txt）</label>
+					<input type="checkbox" name="saveClassification" id="saveClassification" value="saveClassification" /><label name="saveClassification">分类标签数据（.xml）</label>
+				</div>
+                <hr />
+                <div id="description">
+                    提示及备注：
+                    <ul>
+                        <li>
+							按鼠标中键可放大缩小；按鼠标右键移动画布位置（部分浏览器不支持）;
+						</li>
+						<li>
+                            按左←右→键可以切换图片，按上↑下↓键可以切换默认标签，按delete键可以删除标注框；
+                        </li>
+                        <li>
+                            如出现bug，或有其他建议，请邮件联系：476003177@qq.com。
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="right" id="right">
+            <canvas id="canvas"></canvas>
+            <canvas id="hiddenCanvas"></canvas>
+        </div>
+    </div>
+</body>
+<script src="Pic_tag.js"></script>
+</html>
